@@ -31,8 +31,11 @@ anything = {};
 // c
 let some: string;
 some = "Text";
+
 let str: string;
-str = some;
+if (typeof some === "string") {
+  str = some;
+}
 
 //d
 let person: [string, number] = ["Max", 21];
@@ -40,15 +43,27 @@ let person: [string, number] = ["Max", 21];
 //e
 // Опишіть enum умову наступну: він повинен відображати статус завантаження.
 //     Завантажується(LOADING) та завантажена(READY).
-enum Role {
+enum Load {
   LOADING,
   READY,
+}
+
+const page = {
+  load: Load.READY,
+};
+if (page.load === Load.LOADING) {
+  console.log("Сторінка завантажується");
+}
+if (page.load === Load.READY) {
+  console.log("Сторінка завантажена");
 }
 // f Зробіть змінну, яка може приймати або рядок, або число.
 let strOrNum: string | number;
 strOrNum = "string";
 strOrNum = 10;
 // g Зробіть змінну, яка може приймати лише одне значення з двох: 'enable' або 'disable'
+let literal: "enable" | "disable";
+
 let onlyOneValue1: "November" | "December";
 onlyOneValue1 = "November";
 onlyOneValue1 = "December";
