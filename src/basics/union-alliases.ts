@@ -49,4 +49,4 @@ function isOlder(user: User, checkAge: number) {
   return checkAge > user.age;
 }
 
-let someValue: undefined;
+let someValue_2: undefined;
