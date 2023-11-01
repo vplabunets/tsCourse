@@ -1,13 +1,9 @@
 "use strict";
-function fib(input = 1) {
-    let arrFib = [];
-    for (let i = 0; i < input; i += 1) {
-        if (i < 2)
-            arrFib.push(i);
-        else
-            arrFib.push(arrFib[i - 1] + arrFib[i - 2]);
-    }
-    return arrFib[input - 1];
+function mainFunction(num1, num2, exponentiation) {
+    return exponentiation(num1, num2);
 }
-console.log(fib(30));
+function exponentiation(number, power) {
+    return Math.pow(number, power);
+}
+console.log(mainFunction(4, 0.5, exponentiation));
 //# sourceMappingURL=app.js.map
