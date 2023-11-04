@@ -31,6 +31,7 @@ type Numeric = number | boolean;
 type Universal = Combinable & Numeric;
 let xxx: Universal = 22;
 console.log(xxx);
+
 function add(a: Combinable, b: Combinable) {
   if (typeof a === "string" || typeof b === "string") {
     //row below is typeguard
@@ -76,3 +77,90 @@ function useVehicle(vehicle: Vehicle) {
 }
 useVehicle(v1);
 useVehicle(v2);
+
+//Descimitated unions
+
+interface Bird {
+  type: "bird";
+  flyingSpeed: number;
+}
+
+interface Horse {
+  type: "horse";
+  runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal) {
+  // if ("flyingSpeed" in animal)
+  //   console.log("Moving with speed: " + animal.flyingSpeed);
+  let speed;
+  switch (animal.type) {
+    case "bird":
+      speed = animal.flyingSpeed;
+      break;
+    case "horse":
+      speed = animal.runningSpeed;
+  }
+
+  console.log("Moving with speed: " + speed);
+}
+
+moveAnimal({ type: "bird", flyingSpeed: 100 });
+
+const parargaph = document.querySelector("p");
+const parargaph2 = document.querySelector("#message-output");
+// const input = <HTMLInputElement>document.getElementById("text-input")!;
+// const input = (<HTMLInputElement>(
+//   document.getElementById("text-input")!
+// )) as HTMLInputElement;
+
+// console.log(input);
+// input.value = "xxx";
+
+const input2 = document.getElementById("text-input");
+
+if (input2) {
+  (input2 as HTMLInputElement).value = "yyy";
+}
+//index properties
+interface ErrorContainer {
+  [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  email: "Not valid email",
+};
+
+//functions overload
+function addOverload(a: number, b: number): number;
+
+function addOverload(a: string, b: string): string;
+function addOverload(a: Combinable, b: Combinable) {
+  if (typeof a === "string" || typeof b === "string") {
+    //row below is typeguard
+    return a.toString() + b.toString();
+  }
+  // if (typeof a==="number"&& typeof b==="number"){
+  return a + b;
+}
+const result = addOverload("Hello ", "Kitty");
+result.split("");
+
+//Optional chaining
+
+const fetchedData = {
+  id: "1",
+  name: "Vova",
+  job: { title: "CEO", description: "My own company" },
+};
+
+console.log(fetchedData?.job?.title);
+
+//Nulish coalescing
+
+const userInput = "null";
+
+const storedData = userInput ?? "DEFAULT";
+console.log(storedData);
