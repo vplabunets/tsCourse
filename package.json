@@ -2,11 +2,11 @@
   "name": "tscourse",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "build": "webpack "
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/vplabunets/tsCourse#readme",
   "devDependencies": {
+    "axios": "^1.6.1",
     "clean-webpack-plugin": "^4.0.0",
     "lite-server": "^2.6.1",
     "lodash": "^4.17.21",
@@ -30,6 +31,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@types/googlemaps": "^3.43.3",
     "@types/lodash": "^4.14.201"
   }
 }

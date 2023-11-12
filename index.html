@@ -6,13 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>ProjectManager</title>
     <link rel="stylesheet" href="app.css" />
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD200HFER1Qp-77gciulnIj4zDae8-6b4k"
+    ></script>
     <script type="module" src="dist/bundle.js"></script>
   </head>
   <body>
-    <h1>Test</h1>
-
-    <script>
-      var GLOBAL = "global";
-    </script>
+    <div id="map">
+      <p>Please enter an address</p>
+    </div>
+    <form action="">
+      <input type="text" name="" id="address" />
+      <button type="submit">SEARCH ADDRESS</button>
+    </form>
   </body>
 </html>

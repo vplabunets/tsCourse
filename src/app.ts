@@ -1,12 +1,46 @@
-import _ from "lodash";
-import { Product } from "./products.model";
+import axios from "axios";
 
-//lodash
-console.log(_.shuffle([1, 2, 3, 4]));
+const form = document.querySelector("form");
+const addressInput = document.getElementById("address")! as HTMLInputElement;
+const GOOGLE_API_KEY = "AIzaSyD200HFER1Qp-77gciulnIj4zDae8-6b4k";
+type GoogleGeocondingResponse = {
+  results: { geometry: { location: { lat: number; lng: number } } }[];
+  status: "OK" | "ZERO_RESULTS";
+};
+function searchAddressHandler(event: Event) {
+  event?.preventDefault();
+  const enteredAddress = addressInput.value;
+  //send to Google's API
+  axios
+    .get<GoogleGeocondingResponse>(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI(
+        enteredAddress
+      )}&key=${GOOGLE_API_KEY}`
+    )
+    .then((response: any) => {
+      if (response.data.status !== "OK") {
+        throw new Error("Could not fetch location");
+      }
+      const coordinates = response.data.results[0].geometry.location;
 
-//declare
-declare var GLOBAL: any;
-console.log(GLOBAL);
+      const map = new google.maps.Map(
+        document.getElementById("map") as HTMLElement,
+        {
+          center: coordinates,
+          zoom: 16,
+        }
+      );
+      new google.maps.Marker({
+        map: map,
+        position: coordinates,
+        title: "Uluru",
+      });
+    })
+    .catch((err: any) => {
+      alert(err.message);
 
-const newProduct = new Product("Phone", 14.99);
-console.log(newProduct);
+      console.log(err);
+    });
+}
+
+form?.addEventListener("submit", searchAddressHandler);
