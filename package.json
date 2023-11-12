@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "build": "webpack --config webpack.config.prod.js"
+    "build": "webpack "
   },
   "repository": {
     "type": "git",
@@ -22,10 +22,14 @@
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
     "lite-server": "^2.6.1",
+    "lodash": "^4.17.21",
     "ts-loader": "^9.5.0",
     "typescript": "^5.2.2",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.201"
   }
 }

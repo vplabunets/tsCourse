@@ -1,6 +1,12 @@
-import { ProjectInput } from "./components/project-input";
-import { ProjectList } from "./components/project-list";
+import _ from "lodash";
+import { Product } from "./products.model";
 
-new ProjectInput();
-new ProjectList("active");
-new ProjectList("finished");
+//lodash
+console.log(_.shuffle([1, 2, 3, 4]));
+
+//declare
+declare var GLOBAL: any;
+console.log(GLOBAL);
+
+const newProduct = new Product("Phone", 14.99);
+console.log(newProduct);
