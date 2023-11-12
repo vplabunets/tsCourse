@@ -2,10 +2,10 @@
   "name": "tscourse",
   "version": "1.0.0",
   "description": "",
-  "main": "bundle.js",
+  "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --watch",
     "build": "webpack"
   },
   "repository": {
@@ -22,6 +22,8 @@
   "devDependencies": {
     "axios": "^1.6.1",
     "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "fsevents": "^2.3.3",
     "lite-server": "^2.6.1",
     "lodash": "^4.17.21",
     "ts-loader": "^9.5.0",
